@@ -1,0 +1,166 @@
+import Link from 'next/link'
+
+const careers = [
+  {
+    stream: "MPC",
+    fullName: "Maths, Physics, Chemistry",
+    emoji: "⚙️",
+    color: "border-blue-500",
+    accent: "text-blue-400",
+    bg: "bg-blue-900",
+    desc: "Best for students interested in technology and engineering",
+    telugu: "గణితం, భౌతికశాస్త్రం, రసాయనశాస్త్రం",
+    paths: [
+      { job: "Software Engineer", course: "B.Tech CSE", salary: "₹4-25 LPA" },
+      { job: "Mechanical Engineer", course: "B.Tech Mech", salary: "₹3-12 LPA" },
+      { job: "Data Scientist", course: "B.Tech + ML", salary: "₹6-30 LPA" },
+      { job: "Pilot", course: "Commercial Pilot License", salary: "₹8-40 LPA" },
+      { job: "Architect", course: "B.Arch", salary: "₹4-15 LPA" },
+    ],
+    exams: ["JEE Mains", "EAPCET", "BITSAT", "VITEEE"]
+  },
+  {
+    stream: "BiPC",
+    fullName: "Biology, Physics, Chemistry",
+    emoji: "🧬",
+    color: "border-green-500",
+    accent: "text-green-400",
+    bg: "bg-green-900",
+    desc: "Best for students interested in medicine and life sciences",
+    telugu: "జీవశాస్త్రం, భౌతికశాస్త్రం, రసాయనశాస్త్రం",
+    paths: [
+      { job: "Doctor (MBBS)", course: "MBBS", salary: "₹8-50 LPA" },
+      { job: "Pharmacist", course: "B.Pharmacy", salary: "₹3-10 LPA" },
+      { job: "Nurse", course: "B.Sc Nursing", salary: "₹2-8 LPA" },
+      { job: "Biotechnologist", course: "B.Sc Biotech", salary: "₹4-15 LPA" },
+      { job: "Dentist", course: "BDS", salary: "₹5-20 LPA" },
+    ],
+    exams: ["NEET", "EAPCET", "AIIMS", "JIPMER"]
+  },
+  {
+    stream: "CEC",
+    fullName: "Commerce, Economics, Civics",
+    emoji: "💼",
+    color: "border-yellow-500",
+    accent: "text-yellow-400",
+    bg: "bg-yellow-900",
+    desc: "Best for students interested in business and finance",
+    telugu: "వాణిజ్యం, ఆర్థికశాస్త్రం, పౌరశాస్త్రం",
+    paths: [
+      { job: "Chartered Accountant", course: "CA", salary: "₹6-40 LPA" },
+      { job: "Bank Manager", course: "B.Com + MBA", salary: "₹5-20 LPA" },
+      { job: "Civil Servant (IAS)", course: "Any Degree + UPSC", salary: "₹8-20 LPA" },
+      { job: "Tax Consultant", course: "B.Com", salary: "₹4-15 LPA" },
+      { job: "Financial Analyst", course: "BBA Finance", salary: "₹5-18 LPA" },
+    ],
+    exams: ["CA Foundation", "CLAT", "IPMAT", "CUET"]
+  },
+  {
+    stream: "MEC",
+    fullName: "Maths, Economics, Commerce",
+    emoji: "📈",
+    color: "border-purple-500",
+    accent: "text-purple-400",
+    bg: "bg-purple-900",
+    desc: "Best for students interested in economics and management",
+    telugu: "గణితం, ఆర్థికశాస్త్రం, వాణిజ్యం",
+    paths: [
+      { job: "Economist", course: "B.Sc Economics", salary: "₹5-20 LPA" },
+      { job: "Business Analyst", course: "BBA + MBA", salary: "₹6-25 LPA" },
+      { job: "Investment Banker", course: "B.Com + CFA", salary: "₹10-50 LPA" },
+      { job: "Actuary", course: "B.Sc Maths + Actuarial", salary: "₹8-40 LPA" },
+      { job: "Marketing Manager", course: "BBA Marketing", salary: "₹4-18 LPA" },
+    ],
+    exams: ["IPMAT", "CUET", "NMIMS", "SET"]
+  },
+  {
+    stream: "Vocational",
+    fullName: "ITI & Polytechnic",
+    emoji: "🔧",
+    color: "border-orange-500",
+    accent: "text-orange-400",
+    bg: "bg-orange-900",
+    desc: "Best for students who want quick jobs with practical skills",
+    telugu: "వృత్తి విద్య",
+    paths: [
+      { job: "Electrician", course: "ITI Electrical", salary: "₹2-8 LPA" },
+      { job: "Mechanic", course: "ITI Automobile", salary: "₹2-6 LPA" },
+      { job: "Civil Draftsman", course: "Polytechnic Civil", salary: "₹3-8 LPA" },
+      { job: "Computer Operator", course: "ITI COPA", salary: "₹2-5 LPA" },
+      { job: "Fashion Designer", course: "Polytechnic Fashion", salary: "₹3-10 LPA" },
+    ],
+    exams: ["AP POLYCET", "TS POLYCET", "ITI Admission"]
+  },
+  {
+    stream: "HEC/Arts",
+    fullName: "History, Economics, Civics",
+    emoji: "🎨",
+    color: "border-pink-500",
+    accent: "text-pink-400",
+    bg: "bg-pink-900",
+    desc: "Best for students interested in law, journalism and design",
+    telugu: "హ్యుమానిటీస్ మరియు ఆర్ట్స్",
+    paths: [
+      { job: "Lawyer", course: "BA LLB", salary: "₹4-30 LPA" },
+      { job: "Journalist", course: "BA Mass Communication", salary: "₹3-12 LPA" },
+      { job: "Teacher", course: "BA + B.Ed", salary: "₹3-8 LPA" },
+      { job: "Graphic Designer", course: "BA Design", salary: "₹4-15 LPA" },
+      { job: "Civil Services", course: "Any Degree + UPSC", salary: "₹8-20 LPA" },
+    ],
+    exams: ["CLAT", "CUET", "NIFT", "NID"]
+  },
+]
+
+export default function Careers() {
+  return (
+    <main className="min-h-screen bg-gray-950 text-white">
+      <nav className="bg-gray-900 border-b border-gray-800 px-6 py-4 flex justify-between items-center">
+        <a href="/" className="text-xl font-bold text-yellow-400">⭐ Guidestar</a>
+        <div className="flex gap-6 text-sm">
+          <a href="/exams" className="text-gray-300 hover:text-yellow-400">Exams</a>
+          <a href="/colleges" className="text-gray-300 hover:text-yellow-400">Colleges</a>
+          <a href="/ai-guide" className="text-yellow-400 font-semibold">AI Guide</a>
+        </div>
+      </nav>
+
+      <div className="max-w-6xl mx-auto px-6 py-10">
+        <h2 className="text-4xl font-bold mb-2">Career Paths After 10th</h2>
+        <p className="text-gray-400 mb-8">10వ తరగతి తర్వాత మీరు ఎంచుకోగల కెరీర్ మార్గాలు</p>
+
+        <div className="grid gap-6">
+          {careers.map((c, i) => (
+            <div key={i} className={`bg-gray-900 border-l-4 ${c.color} rounded-xl p-6`}>
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <span className="text-3xl">{c.emoji}</span>
+                  <h3 className={`text-2xl font-bold mt-1 ${c.accent}`}>{c.stream}</h3>
+                  <p className="text-white font-medium">{c.fullName}</p>
+                  <p className="text-gray-500 text-sm">{c.telugu}</p>
+                  <p className="text-gray-400 text-sm mt-1">{c.desc}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-gray-400 text-xs mb-1">Key Exams</p>
+                  <div className="flex flex-wrap gap-1 justify-end">
+                    {c.exams.map((e, j) => (
+                      <span key={j} className={`text-xs px-2 py-1 rounded ${c.bg} ${c.accent}`}>{e}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-5 gap-3">
+                {c.paths.map((p, j) => (
+                  <div key={j} className="bg-gray-800 rounded-lg p-3">
+                    <p className="text-white text-sm font-semibold">{p.job}</p>
+                    <p className="text-gray-400 text-xs mt-1">{p.course}</p>
+                    <p className={`text-xs font-bold mt-1 ${c.accent}`}>{p.salary}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </main>
+  )
+}
