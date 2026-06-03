@@ -157,6 +157,19 @@ Keep it simple, clear and encouraging. The student is from AP so mention AP spec
             <div className="text-gray-300 text-sm whitespace-pre-wrap leading-relaxed">
               {result}
             </div>
+
+            <div className="mt-6 bg-gray-800/50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
+              <p className="text-gray-300 text-sm font-semibold mb-2 flex items-center gap-2">
+                <span>⚠️</span> Disclaimer: AI-Generated Guidance
+              </p>
+              <ul className="text-gray-400 text-xs space-y-1 ml-6 list-disc">
+                <li>Recommendations are for guidance purposes only and may contain inaccuracies.</li>
+                <li>Use this recommendation as a starting point for exploring career options, not as a final decision.</li>
+                <li>Please verify all college admissions, fees, cutoffs, and exam details from official sources.</li>
+                <li>Final career and educational decisions should always be made in consultation with parents, teachers, or certified career counselors.</li>
+              </ul>
+            </div>
+
             <button
               onClick={() => { setResult(''); setAnswers({}) }}
               className="mt-6 w-full border border-gray-600 text-gray-400 py-3 rounded-lg hover:border-yellow-400 hover:text-yellow-400 transition"

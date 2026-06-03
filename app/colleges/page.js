@@ -158,8 +158,25 @@ export default function Colleges() {
       </nav>
 
       <div className="max-w-6xl mx-auto px-6 py-10">
-        <h2 className="text-4xl font-bold mb-2">Colleges in AP & Telangana</h2>
-        <p className="text-gray-400 mb-6">మీ జిల్లాలో కళాశాలలు — filter చేసి చూడండి</p>
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-6">
+          <div>
+            <h2 className="text-4xl font-bold mb-2">Colleges in AP & Telangana</h2>
+            <p className="text-gray-400">మీ జిల్లాలో కళాశాలలు — filter చేసి చూడండి</p>
+          </div>
+          <p className="text-gray-500 text-xs mt-4 md:mt-0" suppressHydrationWarning>
+            Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+          </p>
+        </div>
+
+        <div className="bg-gray-800/50 border-l-4 border-green-500 p-4 rounded-r-lg mb-6">
+          <p className="text-gray-300 text-sm font-semibold flex items-center gap-2 mb-1">
+            <span>ℹ️</span> Important Notice
+          </p>
+          <p className="text-gray-400 text-xs">
+            College fees, admission processes, rankings, and eligibility criteria can change annually. 
+            The data provided here is for general guidance. We strongly encourage you to verify all details from the official college websites.
+          </p>
+        </div>
 
         {/* Access Legend */}
         <div className="flex gap-3 mb-6 flex-wrap">

@@ -166,8 +166,25 @@ export default function Exams() {
       </nav>
 
       <div className="max-w-6xl mx-auto px-6 py-10">
-        <h2 className="text-4xl font-bold mb-2">Exam Notifications</h2>
-        <p className="text-gray-400 mb-8">పరీక్షల సమాచారం — తేదీలు, అర్హతలు, దరఖాస్తు లింక్‌లు</p>
+        <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-6">
+          <div>
+            <h2 className="text-4xl font-bold mb-2">Exam Notifications</h2>
+            <p className="text-gray-400">పరీక్షల సమాచారం — తేదీలు, అర్హతలు, దరఖాస్తు లింక్‌లు</p>
+          </div>
+          <p className="text-gray-500 text-xs mt-4 md:mt-0" suppressHydrationWarning>
+            Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+          </p>
+        </div>
+
+        <div className="bg-gray-800/50 border-l-4 border-blue-500 p-4 rounded-r-lg mb-8">
+          <p className="text-gray-300 text-sm font-semibold flex items-center gap-2 mb-1">
+            <span>ℹ️</span> Important Notice
+          </p>
+          <p className="text-gray-400 text-xs">
+            Exam dates, eligibility criteria, fees, and cutoffs are subject to change by the respective conducting bodies. 
+            Always verify the latest information from the official websites linked below before applying.
+          </p>
+        </div>
 
         <div className="grid gap-5">
           {exams.map((exam, i) => (
