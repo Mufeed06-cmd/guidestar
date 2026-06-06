@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://guidestar-beta.vercel.app/sitemap.xml

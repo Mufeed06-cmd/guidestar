@@ -1,44 +1,31 @@
 'use client'
 import { useState } from 'react'
+import Navbar from '@/components/Navbar'
+import { useLang } from '@/lib/LanguageContext'
 
-const questions = [
-  {
-    id: 1,
-    question: "Which subjects do you enjoy the most?",
-    telugu: "మీకు ఏ సబ్జెక్టులు ఇష్టం?",
-    options: ["Maths & Physics", "Biology & Chemistry", "Commerce & Economics", "History & Languages", "Computers & Technology"]
-  },
-  {
-    id: 2,
-    question: "What kind of work do you want to do in future?",
-    telugu: "భవిష్యత్తులో మీరు ఏ పని చేయాలనుకుంటున్నారు?",
-    options: ["Help sick people get better", "Build machines or software", "Run a business or manage money", "Teach or help others", "Work in government or law"]
-  },
-  {
-    id: 3,
-    question: "What is your family's budget for education?",
-    telugu: "విద్య కోసం మీ కుటుంబ బడ్జెట్ ఎంత?",
-    options: ["Very low — need free options", "Low — under ₹50K/year", "Medium — ₹50K to ₹2L/year", "High — above ₹2L/year"]
-  },
-  {
-    id: 4,
-    question: "How are your 10th class marks?",
-    telugu: "మీ 10వ తరగతి మార్కులు ఎలా ఉన్నాయి?",
-    options: ["Above 90% — excellent", "75% to 90% — good", "60% to 75% — average", "Below 60% — below average"]
-  },
-  {
-    id: 5,
-    question: "Where do you want to study?",
-    telugu: "మీరు ఎక్కడ చదువుకోవాలనుకుంటున్నారు?",
-    options: ["Near my home in AP", "Anywhere in AP or TS", "Any college in India", "Abroad if possible"]
-  }
-]
+const ERROR_MESSAGES = {
+  rate_limited: '⏳ Too many requests — please wait a minute and try again.',
+  upstream_error: '🔌 The AI service is temporarily unavailable. Please try again shortly.',
+  empty_response: '⚠️ The AI returned an empty response. Please try again.',
+  default: '❌ Something went wrong. Please check your connection and try again.',
+}
 
 export default function AIGuide() {
+  const { t } = useLang()
+  const ai = t.aiGuide
+
+  const questions = [
+    { id: 1, question: ai.q1, options: ["Maths & Physics", "Biology & Chemistry", "Commerce & Economics", "History & Languages", "Computers & Technology"] },
+    { id: 2, question: ai.q2, options: ["Help sick people get better", "Build machines or software", "Run a business or manage money", "Teach or help others", "Work in government or law"] },
+    { id: 3, question: ai.q3, options: ["Very low — need free options", "Low — under ₹50K/year", "Medium — ₹50K to ₹2L/year", "High — above ₹2L/year"] },
+    { id: 4, question: ai.q4, options: ["Above 90% — excellent", "75% to 90% — good", "60% to 75% — average", "Below 60% — below average"] },
+    { id: 5, question: ai.q5, options: ["Near my home in AP", "Anywhere in AP or TS", "Any college in India", "Abroad if possible"] },
+  ]
+
   const [answers, setAnswers] = useState({})
   const [result, setResult] = useState('')
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const [step, setStep] = useState(0)
 
   function selectAnswer(questionId, answer) {
     setAnswers(prev => ({ ...prev, [questionId]: answer }))
@@ -47,70 +34,52 @@ export default function AIGuide() {
   async function getGuidance() {
     setLoading(true)
     setResult('')
-
-    const prompt = `You are a career counselor for students in Andhra Pradesh, India who have completed 10th class.
-
-A student has answered these questions:
-1. Favorite subjects: ${answers[1]}
-2. Future work interest: ${answers[2]}
-3. Family budget: ${answers[3]}
-4. 10th marks: ${answers[4]}
-5. Study location preference: ${answers[5]}
-
-Give personalized career guidance in this format:
-1. Best stream to choose after 10th (MPC/BiPC/CEC/MEC/Vocational) with reason
-2. Top 3 career options that suit this student
-3. Best colleges in AP/Telangana for this student based on budget
-4. Key exams to prepare for
-5. One motivational message in Telugu
-
-Keep it simple, clear and encouraging. The student is from AP so mention AP specific options.`
+    setError('')
 
     try {
-      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      const res = await fetch('/api/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_GROQ_API_KEY}`
-        },
-        body: JSON.stringify({
-          model: 'llama-3.3-70b-versatile',
-          messages: [{ role: 'user', content: prompt }],
-          max_tokens: 1000
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ answers }),
       })
+
       const data = await res.json()
-      setResult(data.choices[0].message.content)
-    } catch (error) {
-      setResult('Sorry, could not get guidance right now. Please try again.')
+
+      if (!res.ok) {
+        setError(ERROR_MESSAGES[data?.error] ?? ERROR_MESSAGES.default)
+      } else {
+        setResult(data.result)
+      }
+    } catch {
+      setError(ERROR_MESSAGES.default)
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   const allAnswered = Object.keys(answers).length === questions.length
 
   return (
     <main className="min-h-screen bg-gray-950 text-white">
-      <nav className="bg-gray-900 border-b border-gray-800 px-6 py-4 flex justify-between items-center">
-        <a href="/" className="text-xl font-bold text-yellow-400">⭐ Guidestar</a>
-        <div className="flex gap-6 text-sm">
-          <a href="/careers" className="text-gray-300 hover:text-yellow-400">Careers</a>
-          <a href="/exams" className="text-gray-300 hover:text-yellow-400">Exams</a>
-          <a href="/colleges" className="text-gray-300 hover:text-yellow-400">Colleges</a>
-        </div>
-      </nav>
+      <Navbar />
 
       <div className="max-w-3xl mx-auto px-6 py-10">
-        <div className="text-center mb-10">
-          <h2 className="text-4xl font-bold mb-2">🤖 AI Career Guide</h2>
-          <p className="text-gray-400">Answer 5 questions — get personalized career guidance</p>
-          <p className="text-gray-500 text-sm mt-1">5 ప్రశ్నలకు సమాధానం ఇవ్వండి — మీకు సరైన కెరీర్ సూచన పొందండి</p>
+        <div className="text-center mb-6">
+          <h2 className="text-4xl font-bold mb-2">{ai.title}</h2>
+          <p className="text-gray-400">{ai.subtitle}</p>
+          <p className="text-gray-500 text-sm mt-1">{ai.subtitle2}</p>
+        </div>
+
+        <div className="bg-gray-800/60 border border-gray-700 rounded-xl p-4 mb-8 text-xs text-gray-400 leading-relaxed">
+          <p className="font-semibold text-gray-300 mb-1">⚠️ AI-Generated Guidance — Not Official Advice</p>
+          Responses are produced by an AI model and may be inaccurate or incomplete. This tool is for general awareness only.
+          Always verify career, college and exam information from official sources, and consult a certified counselor before making decisions.
         </div>
 
         {/* Progress */}
         <div className="flex gap-2 mb-8">
-          {questions.map((q, i) => (
-            <div key={i} className={`flex-1 h-2 rounded-full ${answers[q.id] ? 'bg-yellow-400' : 'bg-gray-700'}`} />
+          {questions.map((q) => (
+            <div key={q.id} className={`flex-1 h-2 rounded-full ${answers[q.id] ? 'bg-yellow-400' : 'bg-gray-700'}`} />
           ))}
         </div>
 
@@ -118,8 +87,7 @@ Keep it simple, clear and encouraging. The student is from AP so mention AP spec
         <div className="grid gap-6 mb-8">
           {questions.map((q) => (
             <div key={q.id} className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-              <p className="text-white font-semibold mb-1">{q.id}. {q.question}</p>
-              <p className="text-gray-500 text-sm mb-4">{q.telugu}</p>
+              <p className="text-white font-semibold mb-4">{q.id}. {q.question}</p>
               <div className="grid grid-cols-1 gap-2">
                 {q.options.map((opt) => (
                   <button
@@ -139,42 +107,46 @@ Keep it simple, clear and encouraging. The student is from AP so mention AP spec
           ))}
         </div>
 
+        {/* Error */}
+        {error && (
+          <div className="bg-red-900/40 border border-red-500 rounded-xl p-4 mb-4 text-red-300 text-sm">
+            {error}
+            <button onClick={() => setError('')} className="ml-4 text-xs underline">Dismiss</button>
+          </div>
+        )}
+
         {/* Submit */}
         {allAnswered && !result && (
           <button
             onClick={getGuidance}
             disabled={loading}
-            className="w-full bg-yellow-400 text-black font-bold py-4 rounded-xl text-lg hover:bg-yellow-300 transition"
+            className="w-full bg-yellow-400 text-black font-bold py-4 rounded-xl text-lg hover:bg-yellow-300 transition disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {loading ? '🤖 Getting your personalized guidance...' : '🚀 Get My Career Guidance'}
+            {loading ? ai.loading : ai.getGuidance}
           </button>
         )}
 
         {/* Result */}
         {result && (
           <div className="bg-gray-900 border border-yellow-500 rounded-xl p-6 mt-6">
-            <h3 className="text-yellow-400 font-bold text-lg mb-4">🌟 Your Personalized Career Guidance</h3>
-            <div className="text-gray-300 text-sm whitespace-pre-wrap leading-relaxed">
-              {result}
-            </div>
+            <h3 className="text-yellow-400 font-bold text-lg mb-4">{ai.resultTitle}</h3>
+            <div className="text-gray-300 text-sm whitespace-pre-wrap leading-relaxed">{result}</div>
 
             <div className="mt-6 bg-gray-800/50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
-              <p className="text-gray-300 text-sm font-semibold mb-2 flex items-center gap-2">
-                <span>⚠️</span> Disclaimer: AI-Generated Guidance
-              </p>
+              <p className="text-gray-300 text-sm font-semibold mb-2">⚠️ {ai.disclaimerTitle}</p>
               <ul className="text-gray-400 text-xs space-y-1 ml-6 list-disc">
-                <li>Recommendations are for guidance purposes only and may contain inaccuracies.</li>
-                <li>Use this recommendation as a starting point for exploring career options, not as a final decision.</li>
-                <li>Please verify all college admissions, fees, cutoffs, and exam details from official sources.</li>
-                <li>Final career and educational decisions should always be made in consultation with parents, teachers, or certified career counselors.</li>
+                <li>{ai.disclaimer1}</li>
+                <li>{ai.disclaimer2}</li>
+                <li>{ai.disclaimer3}</li>
+                <li>{ai.disclaimer4}</li>
               </ul>
             </div>
 
             <button
-              onClick={() => { setResult(''); setAnswers({}) }}
+              onClick={() => { setResult(''); setError(''); setAnswers({}) }}
               className="mt-6 w-full border border-gray-600 text-gray-400 py-3 rounded-lg hover:border-yellow-400 hover:text-yellow-400 transition"
             >
-              Start Over
+              {ai.startOver}
             </button>
           </div>
         )}
