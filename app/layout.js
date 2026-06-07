@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: 'GuideStar | Career Guide for AP & TS Students',
+  title: 'VidyaDisha | Your Direction to Higher Education',
   description: 'Free career guidance for students in Andhra Pradesh and Telangana after 10th class — streams, exams, colleges and AI guidance.',
   openGraph: {
-    title: 'GuideStar | Career Guide for AP & TS Students',
+    title: 'VidyaDisha | Your Direction to Higher Education',
     description: 'Free career guidance for students in AP & Telangana — streams, exams, colleges and AI guidance after 10th class.',
-    url: 'https://guidestar.edu',
-    images: [{ url: 'https://guidestar.edu/og-image.png', width: 1200, height: 630 }],
+    url: 'https://VidyaDisha.edu',
+    images: [{ url: 'https://VidyaDisha.edu/og-image.png', width: 1200, height: 630 }],
     type: 'website',
   },
 };

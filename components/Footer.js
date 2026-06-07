@@ -8,7 +8,7 @@ export default function Footer() {
 
         {/* About */}
         <div>
-          <p className="text-yellow-400 font-bold text-base mb-2">⭐ GuideStar</p>
+          <p className="text-yellow-400 font-bold text-base mb-2">⭐ VidyaDisha</p>
           <p className="leading-relaxed">Free career guidance for students in Andhra Pradesh &amp; Telangana after 10th class. Built by students, for students.</p>
           <p className="mt-3">
             <Link href="/about" className="text-yellow-400 hover:underline">About this project →</Link>
@@ -29,7 +29,7 @@ export default function Footer() {
         {/* Contact & Social */}
         <div>
           <p className="text-white font-semibold mb-2">Connect</p>
-          <p>📧 <a href="mailto:contact@guidestar.edu" className="hover:text-yellow-400 transition">contact@guidestar.edu</a></p>
+          <p>📧 <a href="mailto:contact@VidyaDisha.edu" className="hover:text-yellow-400 transition">contact@VidyaDisha.edu</a></p>
           <div className="flex gap-4 mt-3">
             <a href="#" aria-label="Instagram" className="hover:text-yellow-400 transition">Instagram</a>
             <a href="#" aria-label="YouTube" className="hover:text-yellow-400 transition">YouTube</a>
@@ -40,8 +40,8 @@ export default function Footer() {
 
       {/* Disclaimer */}
       <div className="max-w-6xl mx-auto mt-8 pt-6 border-t border-gray-800 text-xs text-gray-600">
-        <p>⚠️ <strong className="text-gray-500">Disclaimer:</strong> All information on GuideStar — including exam dates, college fees, eligibility criteria, and salary figures — is indicative and for general guidance only. Data may be outdated or subject to change. Students and parents should verify all details from official sources before making any decisions.</p>
-        <p className="mt-2 text-center text-gray-700">© {new Date().getFullYear()} GuideStar · Built by NBKR Institute of Science &amp; Technology, Batch-6 AID-A</p>
+        <p>⚠️ <strong className="text-gray-500">Disclaimer:</strong> All information on VidyaDisha — including exam dates, college fees, eligibility criteria, and salary figures — is indicative and for general guidance only. Data may be outdated or subject to change. Students and parents should verify all details from official sources before making any decisions.</p>
+        <p className="mt-2 text-center text-gray-700">© {new Date().getFullYear()} VidyaDisha · Built by NBKR Institute of Science &amp; Technology, Batch-6 AID-A</p>
       </div>
     </footer>
   )
