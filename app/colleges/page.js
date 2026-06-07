@@ -130,7 +130,7 @@ const categoryColor = {
 
 const accessColor = (access) => {
   if (access.includes("Open")) return "text-green-400"
-  if (access.includes("Preferred")) return "text-yellow-400"
+  if (access.includes("Preferred")) return "text-cyan-400"
   return "text-red-400"
 }
 
@@ -157,25 +157,25 @@ export default function Colleges() {
   })
 
   return (
-    <main className="min-h-screen bg-gray-950 text-white">
+    <main className="min-h-screen bg-slate-900 text-slate-50 font-sans">
       <Navbar active="colleges" />
 
       <div className="max-w-6xl mx-auto px-6 py-10">
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-6">
           <div>
-            <h2 className="text-4xl font-bold mb-2">{c.title}</h2>
-            <p className="text-gray-400">{c.subtitle}</p>
+            <h2 className="text-4xl font-bold mb-2 tracking-tight">{c.title}</h2>
+            <p className="text-slate-400">{c.subtitle}</p>
           </div>
-          <p className="text-gray-500 text-xs mt-4 md:mt-0" suppressHydrationWarning>
+          <p className="text-slate-500 text-xs mt-4 md:mt-0" suppressHydrationWarning>
             Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
           </p>
         </div>
 
-        <div className="bg-gray-800/50 border-l-4 border-green-500 p-4 rounded-r-lg mb-6">
-          <p className="text-gray-300 text-sm font-semibold flex items-center gap-2 mb-1">
+        <div className="bg-slate-800/50 border-l-4 border-green-500 p-4 rounded-r-lg mb-6">
+          <p className="text-slate-300 text-sm font-semibold flex items-center gap-2 mb-1">
             <span>ℹ️</span> Important Notice
           </p>
-          <p className="text-gray-400 text-xs">
+          <p className="text-slate-400 text-xs">
             College fees, admission processes, rankings, and eligibility criteria can change annually.
             The data provided here is for general guidance. Please verify all details from official college websites.
           </p>
@@ -183,27 +183,27 @@ export default function Colleges() {
 
         {/* Access Legend */}
         <div className="flex gap-3 mb-6 flex-wrap">
-          <span className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-green-400">🌍 Open to All States</span>
-          <span className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-yellow-400">🏠 AP/TS Students Preferred</span>
-          <span className="bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-red-400">⚠️ State Domicile Required</span>
+          <span className="bg-slate-800 border border-slate-700/60 rounded-lg px-3 py-2 text-sm text-green-400">🌍 Open to All States</span>
+          <span className="bg-slate-800 border border-slate-700/60 rounded-lg px-3 py-2 text-sm text-cyan-400">🏠 AP/TS Students Preferred</span>
+          <span className="bg-slate-800 border border-slate-700/60 rounded-lg px-3 py-2 text-sm text-red-400">⚠️ State Domicile Required</span>
         </div>
 
         {/* RGUKT Banner */}
-        <div className="bg-yellow-900 border border-yellow-500 rounded-xl p-4 mb-6">
-          <p className="text-yellow-400 font-bold">🌟 RGUKT — FREE Engineering After 10th for AP & TS Students!</p>
-          <p className="text-yellow-200 text-sm mt-1">6-year integrated B.Tech. No intermediate needed. Fully residential with food included. Based on 10th marks only. AP campuses: Nuzvid, Ongole, Srikakulam, RK Valley, Idupulapaya. TS campus: Basar (Nirmal).</p>
+        <div className="bg-blue-950/40 border border-blue-500/30 rounded-xl p-4 mb-6 hover:scale-[1.01] transition-all duration-200 ease-in-out">
+          <p className="text-cyan-400 font-bold">🌟 RGUKT — FREE Engineering After 10th for AP & TS Students!</p>
+          <p className="text-blue-200 text-sm mt-1">6-year integrated B.Tech. No intermediate needed. Fully residential with food included. Based on 10th marks only. AP campuses: Nuzvid, Ongole, Srikakulam, RK Valley, Idupulapaya. TS campus: Basar (Nirmal).</p>
         </div>
 
         {/* Filters */}
-        <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 mb-6">
-          <p className="text-gray-400 text-sm mb-3">Filter colleges:</p>
+        <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl p-4 mb-6">
+          <p className="text-slate-400 text-sm mb-3 font-medium">Filter colleges:</p>
           <div className="flex gap-4 flex-wrap">
             <div>
-              <p className="text-xs text-gray-500 mb-1">{c.filterState}</p>
+              <p className="text-xs text-slate-500 mb-1">{c.filterState}</p>
               <div className="flex gap-2">
                 {states.map(s => (
                   <button key={s} onClick={() => { setSelectedState(s); setSelectedDistrict('All') }}
-                    className={`px-3 py-1 rounded text-sm ${selectedState === s ? 'bg-yellow-400 text-black font-bold' : 'bg-gray-800 text-gray-300'}`}>
+                    className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200 ease-in-out ${selectedState === s ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}>
                     {s === 'All' ? c.all : s}
                   </button>
                 ))}
@@ -211,11 +211,11 @@ export default function Colleges() {
             </div>
 
             <div>
-              <p className="text-xs text-gray-500 mb-1">{c.filterCategory}</p>
+              <p className="text-xs text-slate-500 mb-1">{c.filterCategory}</p>
               <div className="flex gap-2 flex-wrap">
                 {categories.map(cat => (
                   <button key={cat} onClick={() => setSelectedCategory(cat)}
-                    className={`px-3 py-1 rounded text-sm ${selectedCategory === cat ? 'bg-yellow-400 text-black font-bold' : 'bg-gray-800 text-gray-300'}`}>
+                    className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200 ease-in-out ${selectedCategory === cat ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}>
                     {cat === 'All' ? c.all : cat}
                   </button>
                 ))}
@@ -224,11 +224,11 @@ export default function Colleges() {
 
             {selectedState !== 'All' && (
               <div>
-                <p className="text-xs text-gray-500 mb-1">{c.filterDistrict}</p>
+                <p className="text-xs text-slate-500 mb-1">{c.filterDistrict}</p>
                 <div className="flex gap-2 flex-wrap">
                   {districts.map(d => (
                     <button key={d} onClick={() => setSelectedDistrict(d)}
-                      className={`px-3 py-1 rounded text-sm ${selectedDistrict === d ? 'bg-yellow-400 text-black font-bold' : 'bg-gray-800 text-gray-300'}`}>
+                      className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-200 ease-in-out ${selectedDistrict === d ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-md' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'}`}>
                       {d === 'All' ? c.all : d}
                     </button>
                   ))}
@@ -238,38 +238,38 @@ export default function Colleges() {
           </div>
         </div>
 
-        <p className="text-gray-400 text-sm mb-4">{filtered.length} colleges found</p>
+        <p className="text-slate-400 text-sm mb-4">{filtered.length} colleges found</p>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {filtered.map((college, i) => {
             const CardWrapper = college.website
               ? ({ children }) => <a href={college.website} target="_blank" rel="noopener noreferrer">{children}</a>
               : ({ children }) => <div>{children}</div>
             return (
               <CardWrapper key={i}>
-                <div className={`bg-gray-900 border-l-4 ${categoryColor[college.category] || 'border-gray-500'} rounded-xl p-4 hover:bg-gray-800 hover:border-yellow-400 transition cursor-pointer h-full`}>
+                <div className={`bg-slate-800 border border-slate-700/60 border-l-4 ${categoryColor[college.category] || 'border-slate-500'} rounded-xl p-4 hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.12)] hover:scale-[1.02] transition-all duration-200 ease-in-out cursor-pointer h-full`}>
                   <div className="flex justify-between items-start">
                     <div className="flex-1">
                       <h4 className="text-white font-semibold flex items-center gap-2">
                         {college.name}
-                        {college.rgukt && <span className="text-xs bg-yellow-900 text-yellow-400 px-1.5 py-0.5 rounded font-normal">RGUKT · FREE</span>}
-                        {college.website && <span className="text-gray-500 text-xs font-normal">↗</span>}
+                        {college.rgukt && <span className="text-xs bg-blue-950 text-cyan-400 border border-blue-500/30 px-1.5 py-0.5 rounded font-normal">RGUKT · FREE</span>}
+                        {college.website && <span className="text-slate-500 text-xs font-normal">↗</span>}
                       </h4>
-                      <p className="text-gray-400 text-sm">{college.location}, {college.state}</p>
+                      <p className="text-slate-400 text-sm">{college.location}, {college.state}</p>
                       <p className={`text-xs mt-1 ${accessColor(college.access)}`}>{college.access}</p>
                     </div>
                     <div className="text-right ml-2">
-                      <span className="text-xs bg-gray-800 px-2 py-1 rounded text-gray-300">{college.type}</span>
-                      <p className="text-xs text-gray-500 mt-1">{college.category}</p>
+                      <span className="text-xs bg-slate-750 px-2 py-1 rounded border border-slate-700/50 text-slate-300">{college.type}</span>
+                      <p className="text-xs text-slate-500 mt-1">{college.category}</p>
                     </div>
                   </div>
                   <div className="flex gap-4 mt-3">
                     <div>
-                      <p className="text-gray-500 text-xs">{c.fees}</p>
-                      <p className="text-yellow-400 text-sm font-bold">{college.fees}</p>
+                      <p className="text-slate-500 text-xs">{c.fees}</p>
+                      <p className="text-cyan-400 text-sm font-bold">{college.fees}</p>
                     </div>
                     <div>
-                      <p className="text-gray-500 text-xs">{c.exam}</p>
+                      <p className="text-slate-500 text-xs">{c.exam}</p>
                       <p className="text-white text-sm">{college.exam}</p>
                     </div>
                   </div>
@@ -280,7 +280,7 @@ export default function Colleges() {
         </div>
 
         {filtered.length === 0 && (
-          <div className="text-center py-12 text-gray-500">
+          <div className="text-center py-12 text-slate-500">
             <p className="text-lg">{c.noColleges}</p>
           </div>
         )}

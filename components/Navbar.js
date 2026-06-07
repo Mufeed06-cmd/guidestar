@@ -8,13 +8,13 @@ export default function Navbar() {
   const pathname = usePathname()
 
   const link = (href) =>
-    `hover:text-yellow-400 transition ${pathname === href ? 'text-yellow-400 font-semibold' : 'text-gray-300'}`
+    `hover:text-cyan-400 transition-all duration-200 ease-in-out ${pathname === href ? 'text-cyan-400 font-semibold' : 'text-slate-300'}`
 
   return (
-    <nav className="bg-gray-900 border-b border-gray-800 px-6 py-4 flex justify-between items-center">
+    <nav className="bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800/80 px-6 py-4 flex justify-between items-center transition-all duration-200">
       <div>
-        <Link href="/" className="text-xl font-bold text-yellow-400">{t.nav.brand}</Link>
-        <p className="text-xs text-gray-400">{t.nav.tagline}</p>
+        <Link href="/" className="text-xl font-bold text-blue-400 hover:text-cyan-400 transition-colors duration-200">{t.nav.brand}</Link>
+        <p className="text-xs text-slate-400">{t.nav.tagline}</p>
       </div>
       <div className="flex items-center gap-6 text-sm">
         <Link href="/careers" className={link('/careers')}>{t.nav.careers}</Link>
@@ -23,7 +23,7 @@ export default function Navbar() {
         <Link href="/ai-guide" className={link('/ai-guide')}>{t.nav.aiGuide}</Link>
         <button
           onClick={toggleLang}
-          className="ml-2 px-3 py-1 rounded-lg border border-gray-600 text-gray-300 hover:border-yellow-400 hover:text-yellow-400 transition text-xs font-semibold"
+          className="ml-2 px-3 py-1 rounded-lg border border-slate-700 text-slate-300 hover:border-cyan-400 hover:text-cyan-400 transition-all duration-200 ease-in-out text-xs font-semibold"
           aria-label="Toggle language"
         >
           {lang === 'en' ? 'తెలుగు' : 'English'}

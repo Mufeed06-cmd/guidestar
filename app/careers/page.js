@@ -44,9 +44,9 @@ const careersData = [
     stream: "CEC",
     fullName: "Commerce, Economics, Civics",
     emoji: "💼",
-    color: "border-yellow-500",
-    accent: "text-yellow-400",
-    bg: "bg-yellow-900",
+    color: "border-cyan-500",
+    accent: "text-cyan-400",
+    bg: "bg-cyan-950",
     desc: { en: "Best for students interested in business and finance", te: "వ్యాపారం మరియు ఆర్థికంపై ఆసక్తి ఉన్న విద్యార్థులకు అత్యుత్తమం" },
     telugu: "వాణిజ్యం, ఆర్థికశాస్త్రం, పౌరశాస్త్రం",
     paths: [
@@ -119,26 +119,26 @@ export default function Careers() {
   const c = t.careers
 
   return (
-    <main className="min-h-screen bg-gray-950 text-white">
+    <main className="min-h-screen bg-slate-900 text-slate-50 font-sans">
       <Navbar active="careers" />
 
       <div className="max-w-6xl mx-auto px-6 py-10">
-        <h2 className="text-4xl font-bold mb-2">{c.title}</h2>
-        <p className="text-gray-400 mb-8">{c.subtitle}</p>
+        <h2 className="text-4xl font-bold mb-2 tracking-tight">{c.title}</h2>
+        <p className="text-slate-400 mb-8">{c.subtitle}</p>
 
         <div className="grid gap-6">
           {careersData.map((career, i) => (
-            <div key={i} className={`bg-gray-900 border-l-4 ${career.color} rounded-xl p-6`}>
+            <div key={i} className={`bg-slate-800 border border-slate-700/60 border-l-4 ${career.color} rounded-xl p-6 hover:shadow-[0_0_15px_rgba(59,130,246,0.05)] hover:scale-[1.01] transition-all duration-200 ease-in-out`}>
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <span className="text-3xl">{career.emoji}</span>
                   <h3 className={`text-2xl font-bold mt-1 ${career.accent}`}>{career.stream}</h3>
-                  <p className="text-white font-medium">{career.fullName}</p>
-                  <p className="text-gray-500 text-sm">{career.telugu}</p>
-                  <p className="text-gray-400 text-sm mt-1">{career.desc[lang]}</p>
+                  <p className="text-slate-200 font-medium">{career.fullName}</p>
+                  <p className="text-slate-500 text-sm">{career.telugu}</p>
+                  <p className="text-slate-400 text-sm mt-1">{career.desc[lang]}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-gray-400 text-xs mb-1">{c.keyExams}</p>
+                  <p className="text-slate-400 text-xs mb-1">{c.keyExams}</p>
                   <div className="flex flex-wrap gap-1 justify-end">
                     {career.exams.map((e, j) => (
                       <span key={j} className={`text-xs px-2 py-1 rounded ${career.bg} ${career.accent}`}>{e}</span>
@@ -147,17 +147,17 @@ export default function Careers() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-5 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                 {career.paths.map((p, j) => (
-                  <div key={j} className="bg-gray-800 rounded-lg p-3">
-                    <p className="text-white text-sm font-semibold">{p.job}</p>
-                    <p className="text-gray-400 text-xs mt-1">{p.course}</p>
+                  <div key={j} className="bg-slate-700/40 border border-slate-700/50 rounded-lg p-3 hover:bg-slate-700/60 transition-colors duration-200">
+                    <p className="text-slate-100 text-sm font-semibold">{p.job}</p>
+                    <p className="text-slate-400 text-xs mt-1">{p.course}</p>
                     <p className={`text-xs font-bold mt-1 ${career.accent}`}>{p.salary}</p>
                   </div>
                 ))}
               </div>
               {career.note && (
-                <p className="text-gray-500 text-xs mt-3 italic">{career.note}</p>
+                <p className="text-slate-500 text-xs mt-3 italic">{career.note}</p>
               )}
             </div>
           ))}
