@@ -8,7 +8,12 @@ export default function Footer() {
 
         {/* About */}
         <div>
-          <p className="text-cyan-400 font-bold text-base mb-2">⭐ VidyaDisha</p>
+          <Link href="/" className="flex items-center gap-2 text-base font-bold text-white group mb-3 w-fit">
+            <svg className="w-5 h-5 text-cyan-400 group-hover:rotate-[360deg] transition-transform duration-500 ease-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <polygon points="12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9 12 2" fill="currentColor" strokeLinejoin="round" />
+            </svg>
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-extrabold">VidyaDisha</span>
+          </Link>
           <p className="leading-relaxed text-slate-300">Free career guidance for students in Andhra Pradesh &amp; Telangana after 10th class. Built by students, for students.</p>
           <p className="mt-3">
             <Link href="/about" className="text-blue-400 hover:text-cyan-400 transition-colors duration-200 hover:underline">About this project →</Link>
