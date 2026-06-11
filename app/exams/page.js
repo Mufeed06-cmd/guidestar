@@ -27,7 +27,7 @@ export default function Exams() {
       <div className="max-w-6xl mx-auto px-6 py-10">
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-6">
           <div>
-            <h2 className="text-4xl font-bold mb-2 tracking-tight">{e.title}</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-2 tracking-tight">{e.title}</h2>
             <p className="text-slate-400">{e.subtitle}</p>
           </div>
           <p className="text-slate-500 text-xs mt-4 md:mt-0" suppressHydrationWarning>
@@ -45,9 +45,9 @@ export default function Exams() {
         <div className="grid gap-5">
           {examsData.map((exam, i) => (
             <div key={i} className={`bg-slate-800 border border-slate-700/60 border-l-4 ${exam.color} rounded-xl p-6 hover:shadow-[0_0_15px_rgba(59,130,246,0.05)] hover:scale-[1.01] transition-all duration-200 ease-in-out`}>
-              <div className="flex justify-between items-start">
+              <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
                 <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-1">
+                  <div className="flex flex-wrap items-center gap-3 mb-1">
                     <span className="text-2xl">{exam.emoji}</span>
                     <h3 className={`text-xl font-bold ${exam.accent}`}>{exam.name}</h3>
                     <span className={`text-xs px-2 py-1 rounded ${exam.bg} ${exam.accent}`}>{exam.category}</span>
@@ -79,7 +79,7 @@ export default function Exams() {
                   href={exam.official}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`ml-6 px-4 py-2 rounded-lg border ${exam.color} ${exam.accent} text-sm font-semibold hover:bg-slate-700/50 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 ease-in-out whitespace-nowrap`}
+                  className={`px-4 py-2 rounded-lg border ${exam.color} ${exam.accent} text-sm font-semibold hover:bg-slate-700/50 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 ease-in-out whitespace-nowrap w-full sm:w-auto text-center`}
                 >
                   {e.officialSite}
                 </a>

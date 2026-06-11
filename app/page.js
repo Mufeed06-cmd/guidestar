@@ -63,12 +63,12 @@ export default function Home() {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-cyan-500/5 blur-[80px] rounded-full pointer-events-none -z-10" />
         
         <p className="text-cyan-400 text-sm font-semibold mb-3 tracking-wider uppercase">{h.heroLabel}</p>
-        <h2 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight leading-tight">
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">
           {h.heroTitle} <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">{h.heroHighlight}</span>
         </h2>
         <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">{h.heroDesc}</p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center w-full">
           <Link href="/ai-guide" className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-blue-500/10 hover:shadow-cyan-500/20 hover:from-blue-600 hover:to-cyan-600 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 ease-in-out text-center cursor-pointer">
             {h.ctaAI}
           </Link>

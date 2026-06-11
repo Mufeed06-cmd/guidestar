@@ -54,7 +54,7 @@ export default function About() {
         <Navbar active="about" />
 
         <div className="max-w-3xl mx-auto px-6 py-12">
-          <h2 className="text-4xl font-bold mb-2 tracking-tight">{a.title}</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-2 tracking-tight">{a.title}</h2>
           <p className="text-slate-400 mb-8">{a.subtitle}</p>
 
           <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl p-6 mb-6 hover:border-blue-500/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.08)] hover:scale-[1.01] transition-all duration-200 ease-in-out">

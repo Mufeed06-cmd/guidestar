@@ -163,7 +163,7 @@ export default function Colleges() {
       <div className="max-w-6xl mx-auto px-6 py-10">
         <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-6">
           <div>
-            <h2 className="text-4xl font-bold mb-2 tracking-tight">{c.title}</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-2 tracking-tight">{c.title}</h2>
             <p className="text-slate-400">{c.subtitle}</p>
           </div>
           <p className="text-slate-500 text-xs mt-4 md:mt-0" suppressHydrationWarning>
@@ -197,7 +197,7 @@ export default function Colleges() {
         {/* Filters */}
         <div className="bg-slate-800/80 border border-slate-700/60 rounded-xl p-4 mb-6">
           <p className="text-slate-400 text-sm mb-3 font-medium">Filter colleges:</p>
-          <div className="flex gap-4 flex-wrap">
+          <div className="flex flex-col md:flex-row md:flex-wrap gap-4">
             <div>
               <p className="text-xs text-slate-500 mb-1">{c.filterState}</p>
               <div className="flex gap-2">
@@ -248,9 +248,9 @@ export default function Colleges() {
             return (
               <CardWrapper key={i}>
                 <div className={`bg-slate-800 border border-slate-700/60 border-l-4 ${categoryColor[college.category] || 'border-slate-500'} rounded-xl p-4 hover:border-blue-500 hover:shadow-[0_0_15px_rgba(59,130,246,0.12)] hover:scale-[1.02] transition-all duration-200 ease-in-out cursor-pointer h-full`}>
-                  <div className="flex justify-between items-start">
+                  <div className="flex flex-col sm:flex-row justify-between items-start gap-2">
                     <div className="flex-1">
-                      <h4 className="text-white font-semibold flex items-center gap-2">
+                      <h4 className="text-white font-semibold flex flex-wrap items-center gap-2">
                         {college.name}
                         {college.rgukt && <span className="text-xs bg-blue-950 text-cyan-400 border border-blue-500/30 px-1.5 py-0.5 rounded font-normal">RGUKT · FREE</span>}
                         {college.website && <span className="text-slate-500 text-xs font-normal">↗</span>}
@@ -258,9 +258,9 @@ export default function Colleges() {
                       <p className="text-slate-400 text-sm">{college.location}, {college.state}</p>
                       <p className={`text-xs mt-1 ${accessColor(college.access)}`}>{college.access}</p>
                     </div>
-                    <div className="text-right ml-2">
+                    <div className="text-left sm:text-right flex sm:flex-col items-center sm:items-end gap-2 sm:gap-0 mt-1 sm:mt-0">
                       <span className="text-xs bg-slate-750 px-2 py-1 rounded border border-slate-700/50 text-slate-300">{college.type}</span>
-                      <p className="text-xs text-slate-500 mt-1">{college.category}</p>
+                      <p className="text-xs text-slate-500 sm:mt-1">{college.category}</p>
                     </div>
                   </div>
                   <div className="flex gap-4 mt-3">

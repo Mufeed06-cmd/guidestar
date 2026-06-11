@@ -123,13 +123,13 @@ export default function Careers() {
       <Navbar active="careers" />
 
       <div className="max-w-6xl mx-auto px-6 py-10">
-        <h2 className="text-4xl font-bold mb-2 tracking-tight">{c.title}</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-2 tracking-tight">{c.title}</h2>
         <p className="text-slate-400 mb-8">{c.subtitle}</p>
 
         <div className="grid gap-6">
           {careersData.map((career, i) => (
             <div key={i} className={`bg-slate-800 border border-slate-700/60 border-l-4 ${career.color} rounded-xl p-6 hover:shadow-[0_0_15px_rgba(59,130,246,0.05)] hover:scale-[1.01] transition-all duration-200 ease-in-out`}>
-              <div className="flex justify-between items-start mb-4">
+              <div className="flex flex-col sm:flex-row justify-between items-start mb-4 gap-4">
                 <div>
                   <span className="text-3xl">{career.emoji}</span>
                   <h3 className={`text-2xl font-bold mt-1 ${career.accent}`}>{career.stream}</h3>
@@ -137,9 +137,9 @@ export default function Careers() {
                   <p className="text-slate-500 text-sm">{career.telugu}</p>
                   <p className="text-slate-400 text-sm mt-1">{career.desc[lang]}</p>
                 </div>
-                <div className="text-right">
+                <div className="text-left sm:text-right">
                   <p className="text-slate-400 text-xs mb-1">{c.keyExams}</p>
-                  <div className="flex flex-wrap gap-1 justify-end">
+                  <div className="flex flex-wrap gap-1 justify-start sm:justify-end">
                     {career.exams.map((e, j) => (
                       <span key={j} className={`text-xs px-2 py-1 rounded ${career.bg} ${career.accent}`}>{e}</span>
                     ))}

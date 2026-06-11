@@ -65,7 +65,7 @@ export default function AIGuide() {
 
       <div className="max-w-3xl mx-auto px-6 py-10">
         <div className="text-center mb-6">
-          <h2 className="text-4xl font-bold mb-2 tracking-tight">{ai.title}</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-2 tracking-tight">{ai.title}</h2>
           <p className="text-slate-400">{ai.subtitle}</p>
           <p className="text-slate-500 text-sm mt-1">{ai.subtitle2}</p>
         </div>
