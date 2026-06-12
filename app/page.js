@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLang } from "@/lib/LanguageContext";
@@ -97,6 +98,58 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-slate-900 text-slate-50 flex flex-col font-sans">
+      <Script
+        id="faq-schema"
+        type="application/ld+json"
+        strategy="afterInteractive"
+      >
+        {`{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is VidyaDisha?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VidyaDisha is a free career and education guidance platform helping students in Andhra Pradesh and Telangana choose the right stream, colleges, and career paths after 10th class."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is VidyaDisha free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, VidyaDisha is completely free. All career guidance, college information, exam details, and AI guidance are available at no cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which streams can I explore on VidyaDisha?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VidyaDisha covers 6 major streams: MPC (Maths, Physics, Chemistry), BiPC (Biology), MEC (Commerce), HEC (Humanities), CEC, and Vocational courses after 10th class."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I choose the right stream after 10th?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VidyaDisha provides stream-wise guides, entrance exam details, college comparisons, and an AI guide to help AP and Telangana students make the best decision after 10th class."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which entrance exams does VidyaDisha cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "VidyaDisha covers 10+ entrance exams including EAMCET, NEET, JEE, POLYCET, LAWCET, and other major exams relevant to students in AP and Telangana."
+      }
+    }
+  ]
+}`}
+      </Script>
       <Navbar />
 
       <section className="relative overflow-hidden px-6 pt-20 pb-16 text-center max-w-4xl mx-auto w-full flex flex-col justify-center">
@@ -227,7 +280,7 @@ export default function Home() {
             choose with confidence.
           </p>
           <p>
-            If you're interested in engineering, MPC is your starting point —
+            If you&apos;re interested in engineering, MPC is your starting point —
             followed by competitive exams like{" "}
             <strong className="text-white">
               JEE Main, JEE Advanced, and AP/TS EAMCET
@@ -243,7 +296,7 @@ export default function Home() {
             VidyaDisha covers{" "}
             <strong className="text-white">10+ major entrance exams</strong> in
             detail — including eligibility criteria, syllabus highlights, exam
-            dates, and preparation tips. Whether you're aiming for IIT, AIIMS,
+            dates, and preparation tips. Whether you&apos;re aiming for IIT, AIIMS,
             NIT, or a state university in AP or Telangana, VidyaDisha gives you
             the roadmap to get there.
           </p>
