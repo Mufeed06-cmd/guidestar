@@ -52,6 +52,12 @@ export default function RootLayout({ children }) {
           src="https://www.googletagmanager.com/gtag/js?id=G-3GJZ0KDXDE"
           strategy="afterInteractive"
         />
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5485083249012996"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -59,6 +65,58 @@ export default function RootLayout({ children }) {
             gtag('js', new Date());
             gtag('config', 'G-3GJZ0KDXDE');
           `}
+        </Script>
+        <Script
+          id="faq-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {`{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is VidyaDisha?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "VidyaDisha is a free career and education guidance platform helping students in Andhra Pradesh and Telangana choose the right stream, colleges, and career paths after 10th class."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is VidyaDisha free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, VidyaDisha is completely free. All career guidance, college information, exam details, and AI guidance are available at no cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which streams can I explore on VidyaDisha?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "VidyaDisha covers 6 major streams: MPC (Maths, Physics, Chemistry), BiPC (Biology), MEC (Commerce), HEC (Humanities), CEC, and Vocational courses after 10th class."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I choose the right stream after 10th?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "VidyaDisha provides stream-wise guides, entrance exam details, college comparisons, and an AI guide to help AP and Telangana students make the best decision after 10th class."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which entrance exams does VidyaDisha cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "VidyaDisha covers 10+ entrance exams including EAMCET, NEET, JEE, POLYCET, LAWCET, and other major exams relevant to students in AP and Telangana."
+        }
+      }
+    ]
+  }`}
         </Script>
       </head>
       <body className="min-h-full flex flex-col bg-slate-900 text-slate-50 font-sans">
